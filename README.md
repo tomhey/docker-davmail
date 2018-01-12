@@ -6,21 +6,36 @@ Davmail Version: 4.8.1
 
 ## Quickstart
 
-You need a `davmail.properties` configuration. If you don't know how click [here](http://davmail.sourceforge.net/serversetup.html).
-
-Run the container:
-
-``` bash
-DAVMAIL_CONF=<absolute/path/to/davmail.properties>
-docker run -v ${DAVMAIL_CONF}:/etc/davmail/davmail.properties jberrenberg/davmail
+```bash
+./start-docker.sh
 ```
+Configure Thunderbird to connect to a server with the following settings:
 
-## Exposed ports
+#### General
 
-The following ports are exposed by the container:
+|Field|Value|
+|------|----------------|
+|Email address|Exchange email address|
+| Password | Exchange password|
 
-* caldav: 1080
-* imap: 1143
-* ldap: 1389
-* pop: 1110
-* smtp: 1025
+#### Incoming
+
+|Field|Value|
+|-----|-----|
+|Protocol|IMAP|
+|Server hostname|exchange-gateway.local|
+|Port|1143|
+|SSL|None|
+|Authentication|Normal password|
+|Username|Exchange email address|
+
+#### Outgoing
+
+|Field|Value|
+|-----|-----|
+|Protocol|SMTP|
+|Server hostname|exchange-gateway.local|
+|Port|1025|
+|SSL|None|
+|Authentication|Normal password|
+|Username|Exchange email address|
